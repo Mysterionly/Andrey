@@ -1,0 +1,74 @@
+﻿@page
+@model Andrey.Pages.Profile.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>UserData</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserData.User.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserData.User.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserData.User.Login)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserData.User.Login)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserData.User.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserData.User.Password)
+        </dd>
+    </dl>
+    </div>
+    
+
+    <div>
+    @if (Model.UserData.User.IsAdmin)
+    {
+        <p class="col-sm-10">
+            Ура, Вы админ! Вы можете следующие штуки:
+        </p>
+        <br>
+        <a asp-page="/Maintenance/Index">Управлять контентом страниц сайта</a>
+        <br>
+        <a asp-page="/Users/Index">Управлять пользователями</a>
+        <br>
+        <a asp-page="/Teachers/Index">Управлять списком преподавателей</a>
+        <br>
+        <a asp-page="/Students/Index">Управлять списком студентов</a>
+        <br>
+        <a asp-page="/Courses/Index">Управлять курсами</a>
+        <br>
+        <a asp-page="/Lessongs/Index">Управлять уроками</a>
+        <br>
+        <a asp-page="/Comments/Index">Управлять комментариями</a>
+        <br>
+        <a asp-page="/Sertificates/Index">Управлять сертификатами</a>
+        <hr>
+        <br>
+    }
+</div>
+
+<div>
+    @if (Model.UserData.User.Teachers != null){<p class="col-sm-10">Ура, Вы преподаватель! Вы можете следующие штуки:</p><a asp-page="/Students/Index">Управлять списком своих студентов</a><br><a asp-page="/Sertificates/Index">Управлять сертификатами своих курсов</a><hr><br>}
+</div>
+<div>
+    @if (Model.UserData.User.Students != null){<p class="col-sm-10">Ура, Вы студент! Вы можете следующие штуки:</p><a asp-page="/IntroTest">Пройти входное тестирование</a><br><a asp-page="/FinishTest">Пройти выходное тестирование</a><br><a asp-page="/Error">Посмотреть сертификат</a><hr><br>}
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.UserData.UId">Edit</a> |
+    <a asp-page="./LogOut">Выйти из аккаунта</a> 
+</div>

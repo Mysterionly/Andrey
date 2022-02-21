@@ -1,0 +1,35 @@
+﻿@page
+@model Andrey.Pages.Sertificates.DetailsModel
+
+@{
+    ViewData["Title"] = "Сертификат";
+}
+
+<h1>Сертификат</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            ФИО студента
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sertificate.Student.User.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            Название курса
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sertificate.Course.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Дата сертификата
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sertificate.Created)
+        </dd>
+    </dl>
+</div>
+<div>
+</div>
+

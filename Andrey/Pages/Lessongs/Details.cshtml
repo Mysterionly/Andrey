@@ -1,0 +1,82 @@
+﻿@page
+@model Andrey.Pages.Lessongs.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Lessong</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lessong.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lessong.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lessong.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Lessong.Content.ToString().Replace("\n", "<br>"))
+            <br>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lessong.Course)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lessong.Course.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lessong.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lessong.Created)
+        </dd>
+    </dl>
+</div>
+<div>
+    <!--<a asp-page="./Edit" asp-route-id="@Model.Lessong.LessongID">Edit</a>-->
+</div>
+
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Comment.Content" class="control-label">Оставить комментарий к уроку:</label>
+                <input asp-for="Comment.Content" class="form-control" />
+                <span asp-validation-for="Comment.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+<table class="table">
+    <tbody>
+    @foreach (var item in Model.Lessong.Comments) {
+        <tr>
+            <td width = "15%">
+                @Html.DisplayFor(modelItem => item.User.FullName)
+                <br>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                    @if (item.UserID == Model.User.UserID)
+                    {
+                        <a asp-page="/Comments/Delete" asp-route-id="@item.CommentID">Delete</a>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+

@@ -1,0 +1,48 @@
+﻿@page
+@model Andrey.Pages.Sertificates.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sertificate[0].Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sertificate[0].Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sertificate[0].Created)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Sertificate) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.StudentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.SertificateID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.SertificateID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.SertificateID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

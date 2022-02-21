@@ -1,0 +1,19 @@
+﻿@page
+@model Andrey.Pages.ScheduleModel
+
+@{
+    ViewData["Title"] = "Расписание";
+}
+
+<h1>Расписание занятий</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-10">
+            @Html.Raw(Model.AppMaintenance.AttrContent)
+        </dd>
+    </dl>
+</div>
+<div>
+</div>
