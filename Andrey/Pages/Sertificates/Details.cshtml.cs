@@ -29,9 +29,11 @@ namespace Andrey.Pages.Sertificates
         }
 
         public Sertificate Sertificate { get; set; }
+        public string mypath;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -48,12 +50,14 @@ namespace Andrey.Pages.Sertificates
                 return NotFound();
             }
 
+            mypath = Request.Scheme + "://" + Request.Host + "/images/111.jpg";
+
             //string myUrl = this.Request.Scheme + "://" +  this.Request.Host + this.Request.Path + this.Request.QueryString;
             //MakePdf(myUrl);
             var h = GetMyHtml();
             byte[] barr = MakePdfFromHtml(h);
-            return Page();
-            //return File(barr, "application/pdf", "МОЙ СЕРТИФИКАТ.pdf");
+            //return Page();
+            return File(barr, "application/pdf", "МОЙ СЕРТИФИКАТ.pdf");
         }
         //public void MakePdfFromUrl(string url)
         //{
@@ -64,8 +68,19 @@ namespace Andrey.Pages.Sertificates
         //}
         public byte[] MakePdfFromHtml(string html)
         {
+            //var Renderer = new IronPdf.ChromePdfRenderer();
+            ////Renderer.RenderHtmlAsPdf(html).SaveAs("pixel-perfect.pdf");
+            //return Renderer.RenderHtmlAsPdf(html).BinaryData;
+
             var Renderer = new IronPdf.ChromePdfRenderer();
-            //Renderer.RenderHtmlAsPdf(html).SaveAs("pixel-perfect.pdf");
+            Renderer.RenderingOptions.PaperOrientation = IronPdf.Rendering.PdfPaperOrientation.Landscape;
+            var PDF = Renderer.RenderHtmlAsPdf(html);
+            //var OutputPath = "pixel-perfect.pdf";
+            //PDF.SaveAs(OutputPath);
+
+            //var PDF = Renderer.RenderHtmlAsPdf("<img src='"+mypath+"'>");
+            //var OutputPath = "pixel-perfect.pdf";
+            //PDF.SaveAs(OutputPath);
             return Renderer.RenderHtmlAsPdf(html).BinaryData;
         }
 

@@ -7,36 +7,83 @@
 
 <style type="text/css">
 .bgimg {
-    background-image: url('../../wwwroot/images/Scan_0002.jpg');
+    background-image: url(@Model.mypath);
+    width: 763px;
+    height: 580px;
+    background-size: cover;
+}
+.emptyHeader{
+    height: 30%;
+    margin: 10px;
+}
+.horTitle10pers{
+    height: 10%;
+    text-align: center;
+}
+.horTitle20pers{
+    height: 10%;
+    text-align: left;
+    padding-left:20px;
+}
+.leftAl{
+    text-align:left;
+    padding-left:20px;
+}
+.rightAl{
+    text-align:right;
+    padding-right:20px;
 }
 </style>
 
-<h1>Сертификат</h1>
-
-<div class="bgimg">
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            ФИО студента
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sertificate.Student.User.FullName)
-        </dd>
-        <dt class="col-sm-2">
-            Название курса
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sertificate.Course.Name)
-        </dd>
-        <dt class="col-sm-2">
-            Дата сертификата
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sertificate.Created)
-        </dd>
-    </dl>
-    <img src = "../../wwwroot/images/Scan_0002.jpg"  alt="fck u">
-</div>
-<div>
+<div class = "bgimg">
+    <div class = "emptyHeader"></div>
+    <div class = "horTitle10pers">
+        <p>подтверждает, что</p>
+    </div>
+    <div class = "horTitle10pers">
+        <p><b>@Html.DisplayFor(model => model.Sertificate.Student.User.FullName)</b></p>
+    </div>
+    <div class = "horTitle20pers">
+        <p>прошел обучение в школе ШДОТ</p>
+    </div>
+    <div class = "horTitle20pers">
+        по предмету
+        <br>
+        @Html.DisplayFor(model => model.Sertificate.Course.Name)
+    </div>
+    <div class = "horTitle10pers">
+        <br />
+        <br />
+        <table align = "center" width="540" border="0" >
+            <tr>
+                <td>@Html.DisplayFor(model => model.Sertificate.Created)</td>
+                <td><div class = "rightAl">Подпись</div></td>
+            </tr>
+        </table>
+    </div>
+    <!--</div>
+        <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                ФИО студента
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sertificate.Student.User.FullName)
+            </dd>
+            <dt class="col-sm-2">
+                Название курса
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sertificate.Course.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Дата сертификата
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sertificate.Created)
+            </dd>
+        </dl>
+        </div>-->
 </div>
 
