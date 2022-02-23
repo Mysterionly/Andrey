@@ -5,9 +5,15 @@
     ViewData["Title"] = "Сертификат";
 }
 
+<style type="text/css">
+.bgimg {
+    background-image: url('../../wwwroot/images/Scan_0002.jpg');
+}
+</style>
+
 <h1>Сертификат</h1>
 
-<div>
+<div class="bgimg">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -29,6 +35,7 @@
             @Html.DisplayFor(model => model.Sertificate.Created)
         </dd>
     </dl>
+    <img src = "../../wwwroot/images/Scan_0002.jpg"  alt="fck u">
 </div>
 <div>
 </div>

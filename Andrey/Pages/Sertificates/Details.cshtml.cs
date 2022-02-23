@@ -14,6 +14,8 @@ using System.Text.Encodings.Web;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Andrey.Pages.Sertificates
 {
@@ -50,8 +52,8 @@ namespace Andrey.Pages.Sertificates
             //MakePdf(myUrl);
             var h = GetMyHtml();
             byte[] barr = MakePdfFromHtml(h);
-            File(barr, "application/pdf", "МОЙ СЕРТИФИКАТ.pdf");
             return Page();
+            //return File(barr, "application/pdf", "МОЙ СЕРТИФИКАТ.pdf");
         }
         //public void MakePdfFromUrl(string url)
         //{
@@ -63,7 +65,7 @@ namespace Andrey.Pages.Sertificates
         public byte[] MakePdfFromHtml(string html)
         {
             var Renderer = new IronPdf.ChromePdfRenderer();
-            Renderer.RenderHtmlAsPdf(html).SaveAs("pixel-perfect.pdf");
+            //Renderer.RenderHtmlAsPdf(html).SaveAs("pixel-perfect.pdf");
             return Renderer.RenderHtmlAsPdf(html).BinaryData;
         }
 
