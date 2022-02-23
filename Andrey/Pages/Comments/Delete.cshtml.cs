@@ -25,19 +25,6 @@ namespace Andrey.Pages.Comments
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //Comment = await _context.Comment
-            //    .Include(c => c.User).FirstOrDefaultAsync(m => m.CommentID == id);
-
-            //if (Comment == null)
-            //{
-            //    return NotFound();
-            //}
-            //return Page();
 
             if (id == null)
             {

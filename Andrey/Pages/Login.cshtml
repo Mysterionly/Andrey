@@ -2,25 +2,26 @@
 @model Andrey.Pages.LoginModel
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Вход в личный кабинет";
 }
 
-<h1>Login</h1>
+<h1>Войти в личный кабинет</h1>
 
 <div>
-    <h4>User</h4>
     <hr />
         <form method="post">
             <div class="form-group">
-                <label class="control-label" asp-for="uData.User.Login"></label>
+                <label>Логин</label>
                 <input type="text" asp-for="uData.User.Login" />
                 <span asp-validation-for="uData.User.Login" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <label asp-for="uData.User.Password" class="control-label" ></label>
-                <input type="password" asp-for="uData.User.Password" class="form-control" />
+                <label>Пароль</label>
+                <input type="password" asp-for="uData.User.Password"/>
                 <span asp-validation-for="uData.User.Password" class="text-danger"></span>
             </div>
+            <br />
             <div>
                 <input type="submit" value="Пустите меня!" class="btn btn-primary" />
             </div>

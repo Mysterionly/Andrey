@@ -2,7 +2,7 @@
 @model Andrey.Pages.IntroTestModel
 
 @{
-    ViewData["Title"] = "IntroTest";
+    ViewData["Title"] = "Входной тест";
 }
 
 <h1>Входной тест</h1>
@@ -17,8 +17,4 @@
             @Html.Raw(Model.AppMaintenance.AttrContent)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.AppMaintenance.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
 </div>
