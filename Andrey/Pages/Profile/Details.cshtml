@@ -1,32 +1,32 @@
 ﻿@page
+@using Andrey.Models
 @model Andrey.Pages.Profile.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Личный кабинет";
 }
 
-<h1>Details</h1>
+<h1>Личный кабинет</h1>
 
 <div>
-    <h4>UserData</h4>
     <hr />
     <dl class="row">
     </dl>
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserData.User.FullName)
+            Имя пользователя
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UserData.User.FullName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserData.User.Login)
+            Логин
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UserData.User.Login)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserData.User.Password)
+            Пароль
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UserData.User.Password)
@@ -35,7 +35,7 @@
     </div>
     
 
-    <div>
+    <div class="col-sm-10">
     @if (Model.UserData.User.IsAdmin)
     {
         <p class="col-sm-10">
@@ -48,27 +48,53 @@
         <br>
         <a asp-page="/Teachers/Index">Управлять списком преподавателей</a>
         <br>
-        <a asp-page="/Students/Index">Управлять списком студентов</a>
-        <br>
-        <a asp-page="/Courses/Index">Управлять курсами</a>
-        <br>
-        <a asp-page="/Lessongs/Index">Управлять уроками</a>
-        <br>
-        <a asp-page="/Comments/Index">Управлять комментариями</a>
-        <br>
-        <a asp-page="/Sertificates/Index">Управлять сертификатами</a>
+        <a asp-page="/Courses/Index">Управлять списком курсов</a>
         <hr>
         <br>
     }
 </div>
 
-<div>
-    @if (Model.UserData.User.Teachers != null){<p class="col-sm-10">Ура, Вы преподаватель! Вы можете следующие штуки:</p><a asp-page="/Students/Index">Управлять списком своих студентов</a><br><a asp-page="/Sertificates/Index">Управлять сертификатами своих курсов</a><hr><br>}
+<div class="col-sm-10">
+    @if (Model.UserData.User.Teachers != null){<p class="col-sm-10">Ура, Вы преподаватель! Вы можете следующие штуки:</p><a asp-page="/Students/Index">Управлять списком своих студентов</a><br><a asp-page="/Sertificates/Index">Управлять сертификатами своих курсов</a><br><a asp-page="/Lessongs/Create">Добавить новый урок</a><hr><br>}
+</div>
+<div class="col-sm-10">
+    @if (Model.UserData.User.Students != null)
+    {
+        <p class="col-sm-10">Ура, Вы студент! Вы можете следующие штуки:</p>
+        <a asp-page="/IntroTest">Пройти входное тестирование</a><br>
+        <a asp-page="/FinishTest">Пройти выходное тестирование</a><br>
+        <p>Распечатать сертификаты по курсам, на которые записаны:</p>
+
+        <table width = "300px">
+            <tr>
+                <td>
+                    <b>Курс</b>
+                    <br>
+                </td>
+               <td>
+                   <b>Сертификат</b>
+                    <br>
+                </td>
+            </tr>
+            @foreach (Sertificate s in Model.Sertificates)
+            {
+                <tr>
+                    <td>
+                        @s.Course.Name
+                    </td>
+                    <td>
+                        @if (s.Created != null) {<a asp-page="/Sertificates/Details" asp-route-id="@s.SertificateID">Печатать сертификат</a>}
+                        else {<p>Сертификат пока не присвоен...</p>}
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <hr />
+        <br />
+    
+    }
 </div>
 <div>
-    @if (Model.UserData.User.Students != null){<p class="col-sm-10">Ура, Вы студент! Вы можете следующие штуки:</p><a asp-page="/IntroTest">Пройти входное тестирование</a><br><a asp-page="/FinishTest">Пройти выходное тестирование</a><br><a asp-page="/Error">Посмотреть сертификат</a><hr><br>}
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.UserData.UId">Edit</a> |
     <a asp-page="./LogOut">Выйти из аккаунта</a> 
 </div>

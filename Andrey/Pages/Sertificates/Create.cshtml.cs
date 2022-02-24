@@ -20,10 +20,16 @@ namespace Andrey.Pages.Sertificates
             _context = context;
         }
 
+        public IList<User> Users { get; set; }
+
         public IActionResult OnGet()
         {
-        ViewData["CourseID"] = new SelectList(_context.Course, "CourseID", "Name");
-        ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "StudentID");
+            foreach (Student s in _context.Student)
+            {
+                s.User = _context.User.Find(s.UserID);
+            }
+            ViewData["CourseID"] = new SelectList(_context.Course, "CourseID", "Name");
+            ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "User.FullName");
             return Page();
         }
 

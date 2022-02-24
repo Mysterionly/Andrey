@@ -38,7 +38,7 @@ namespace Andrey.Pages.Teachers
             {
                 return NotFound();
             }
-           ViewData["UserID"] = new SelectList(_context.User, "UserID", "Login");
+           ViewData["UserID"] = new SelectList(_context.User, "UserID", "FullName");
             return Page();
         }
 

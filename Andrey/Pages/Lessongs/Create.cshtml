@@ -2,38 +2,45 @@
 @model Andrey.Pages.Lessongs.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Добавить урок";
 }
 
-<h1>Create</h1>
+<style>
 
-<h4>Lessong</h4>
+.hdn{
+    visibility:hidden;
+}
+</style>
+<h1>Создаем урок</h1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Lessong.Name" class="control-label"></label>
+                <label>Заголовок</label>
                 <input asp-for="Lessong.Name" class="form-control" />
                 <span asp-validation-for="Lessong.Name" class="text-danger"></span>
             </div> 
             <div class="form-group">
-                <label asp-for="Lessong.CourseID" class="control-label"></label>
+                <label>Курс</label>
                 <select asp-for="Lessong.CourseID" class ="form-control" asp-items="ViewBag.CourseID"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="Lessong.Created" class="control-label"></label>
-                <input asp-for="Lessong.Created" class="form-control" />
-                <span asp-validation-for="Lessong.Created" class="text-danger"></span>
+            <div class = "hdn">
+                <div class="form-group">
+                    <label asp-for="Lessong.Created" class="control-label"></label>
+                    <input asp-for="Lessong.Created" class="form-control" />
+                    <span asp-validation-for="Lessong.Created" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="Lessong.Content" class="control-label"></label>
+                <label>Материалы урока</label>
                 <textarea asp-for="Lessong.Content" rows="15" class="form-control"></textarea>
                 <span asp-validation-for="Lessong.Content" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Создать урок!" class="btn btn-primary" />
             </div>
         </form>
     </div>

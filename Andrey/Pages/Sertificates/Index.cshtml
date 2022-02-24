@@ -2,25 +2,25 @@
 @model Andrey.Pages.Sertificates.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Сертификаты";
 }
 
-<h1>Index</h1>
+<h1>Здесь видно всех студентов, зачисленных на курс</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Зачислить нового студента на курс</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Sertificate[0].Student)
+                Студент
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sertificate[0].Course)
+                Курс
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sertificate[0].Created)
+                Дата сертификата (если пусто - еще не выдан)
             </th>
             <th></th>
         </tr>
@@ -29,7 +29,7 @@
 @foreach (var item in Model.Sertificate) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentID)
+                @Html.DisplayFor(modelItem => item.Student.User.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Course.Name)
@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Created)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.SertificateID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.SertificateID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.SertificateID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.SertificateID">Выдать с датой</a> |
+                <a asp-page="./Details" asp-route-id="@item.SertificateID">Напечатать сертификат</a> |
+                <a asp-page="./Delete" asp-route-id="@item.SertificateID">Отчислить студента с курса</a>
             </td>
         </tr>
 }

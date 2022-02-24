@@ -22,7 +22,7 @@ namespace Andrey.Pages.Teachers
 
         public IActionResult OnGet()
         {
-        ViewData["UserID"] = new SelectList(_context.User, "UserID", "Login");
+        ViewData["UserID"] = new SelectList(_context.User, "UserID", "FullName");
             return Page();
         }
 

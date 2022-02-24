@@ -34,13 +34,18 @@ namespace Andrey.Pages.Sertificates
             Sertificate = await _context.Sertificate
                 .Include(s => s.Course)
                 .Include(s => s.Student).FirstOrDefaultAsync(m => m.SertificateID == id);
+            Sertificate.Student.User = _context.User.FirstOrDefault(u => u.UserID == Sertificate.Student.UserID);
 
             if (Sertificate == null)
             {
                 return NotFound();
             }
-           ViewData["CourseID"] = new SelectList(_context.Course, "CourseID", "Name");
-           ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "StudentID");
+            ViewData["CourseID"] = new SelectList(_context.Course, "CourseID", "Name");
+            foreach(Student s in _context.Student)
+            {
+                s.User = _context.User.FirstOrDefault(u => u.UserID == s.UserID);
+            }
+            ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "User.FullName");
             return Page();
         }
 

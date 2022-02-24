@@ -2,39 +2,38 @@
 @model Andrey.Pages.Sertificates.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Удалить сертификат";
 }
 
-<h1>Delete</h1>
+<h1>Снять студента с курса</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Студент будет отчислен с курса. Сертификат будет удален.</h3>
 <div>
-    <h4>Sertificate</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sertificate.Student)
+            ФИО студента
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sertificate.Student.StudentID)
+            @Html.DisplayFor(model => model.Sertificate.Student.User.FullName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sertificate.Course)
+            Логин студента
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sertificate.Student.User.Login)
+        </dd>
+        <dt class="col-sm-2">
+            Курс
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Sertificate.Course.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sertificate.Created)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sertificate.Created)
         </dd>
     </dl>
     
     <form method="post">
         <input type="hidden" asp-for="Sertificate.SertificateID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-page="./Index">К списку сертификатов</a>
     </form>
 </div>

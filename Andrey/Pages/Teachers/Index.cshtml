@@ -2,25 +2,19 @@
 @model Andrey.Pages.Teachers.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Учителя";
 }
 
-<h1>Index</h1>
+<h1>Список учителей ШДОД</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Ввести нового учителя в должность</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Teacher[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Teacher[0].User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Teacher[0].User.FullName)
+                ФИО учителя
             </th>
             <th></th>
         </tr>
@@ -29,18 +23,12 @@
 @foreach (var item in Model.Teacher) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.User.FullName)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.TeacherID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TeacherID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TeacherID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.TeacherID">Редактировать</a> |
+                <a asp-page="./Details" asp-route-id="@item.TeacherID">Подробнее</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TeacherID">Вывести из должности</a>
             </td>
         </tr>
 }

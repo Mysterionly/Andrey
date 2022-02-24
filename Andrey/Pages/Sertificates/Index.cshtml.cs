@@ -27,6 +27,10 @@ namespace Andrey.Pages.Sertificates
             Sertificate = await _context.Sertificate
                 .Include(s => s.Course)
                 .Include(s => s.Student).ToListAsync();
+            foreach (Sertificate s in Sertificate)
+            {
+                s.Student.User = _context.User.FirstOrDefault(u => u.UserID == s.Student.UserID);
+            }
         }
     }
 }

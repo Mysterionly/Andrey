@@ -4,6 +4,11 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<style>
+.hidn{
+    visibility:hidden;
+}
+</style>
 
 <h1>Edit</h1>
 
@@ -15,11 +20,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Lessong.LessongID" />
             <div class="form-group">
-                <label asp-for="Lessong.Name" class="control-label"></label>
+                <label>Заголовок</label>
                 <input asp-for="Lessong.Name" class="form-control" />
                 <span asp-validation-for="Lessong.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+            <div class = "hidn">
                 <label asp-for="Lessong.CourseID" class="control-label"></label>
                 <select asp-for="Lessong.CourseID" class="form-control" asp-items="ViewBag.CourseID"></select>
                 <span asp-validation-for="Lessong.CourseID" class="text-danger"></span>
@@ -29,6 +35,7 @@
                 <input asp-for="Lessong.Created" class="form-control" />
                 <span asp-validation-for="Lessong.Created" class="text-danger"></span>
             </div>
+            </div>
             
             <div class="form-group">
                 <label asp-for="Lessong.Content" class="control-label"></label>
@@ -36,7 +43,7 @@
                 <span asp-validation-for="Lessong.Content" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
 
         </form>

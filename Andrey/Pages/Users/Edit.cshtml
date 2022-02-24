@@ -39,10 +39,9 @@
                 <span asp-validation-for="User.Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Права администратора</label>
-                <input type = "checkbox" asp-for="User.IsAdmin" class="form-control" />
-                <span asp-validation-for="User.IsAdmin" class="text-danger"></span>
-            </div>
+                    <label>Этот пользователь будет администратором</label>
+                    <input type = "checkbox" asp-for="User.IsAdmin"/>
+                </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить изменения" class="btn btn-primary" />
             </div>

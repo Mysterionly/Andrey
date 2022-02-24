@@ -21,6 +21,7 @@ namespace Andrey.Pages.Profile
         }
 
         public UserData UserData { get; set; }
+        public List<Sertificate> Sertificates { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -41,6 +42,15 @@ namespace Andrey.Pages.Profile
 
             UserData.User.Teachers = await _context.Teacher.FirstOrDefaultAsync(u => u.UserID == UserData.User.UserID);
             UserData.User.Students = await _context.Student.FirstOrDefaultAsync(u => u.UserID == UserData.User.UserID);
+            Sertificates = new List<Sertificate>();
+            foreach (Sertificate s in _context.Sertificate)
+            {
+                if (s.StudentID == UserData.User.Students.StudentID)
+                {
+                    s.Course = _context.Course.FirstOrDefault(c => c.CourseID == s.CourseID);
+                    Sertificates.Add(s);
+                }
+            }
 
             return Page();
         }

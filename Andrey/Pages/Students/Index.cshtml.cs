@@ -20,7 +20,7 @@ namespace Andrey.Pages.Students
             _context = context;
         }
 
-        public IList<Student> Student { get;set; }
+        public IList<Student> Student { get; set; }
 
         public async Task OnGetAsync()
         {

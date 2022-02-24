@@ -2,12 +2,12 @@
 @model Andrey.Pages.Sertificates.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редактировать сертификат";
 }
 
-<h1>Edit</h1>
+<h1>Редактировать сертификат</h1>
 
-<h4>Sertificate</h4>
+<h4>Здесь можно поставить дату сертификата, если Вы хотите выдать его студенту.</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,29 +15,28 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Sertificate.SertificateID" />
             <div class="form-group">
-                <label asp-for="Sertificate.StudentID" class="control-label"></label>
+                <label>Студент</label>
                 <select asp-for="Sertificate.StudentID" class="form-control" asp-items="ViewBag.StudentID"></select>
-                <span asp-validation-for="Sertificate.StudentID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sertificate.CourseID" class="control-label"></label>
+                <label>Курс</label>
                 <select asp-for="Sertificate.CourseID" class="form-control" asp-items="ViewBag.CourseID"></select>
                 <span asp-validation-for="Sertificate.CourseID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sertificate.Created" class="control-label"></label>
+                <label>Дата в сертификате</label>
                 <input asp-for="Sertificate.Created" class="form-control" />
                 <span asp-validation-for="Sertificate.Created" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">К списку сертификатов</a>
 </div>
 
 @section Scripts {

@@ -33,6 +33,7 @@ namespace Andrey.Pages.Sertificates
             Sertificate = await _context.Sertificate
                 .Include(s => s.Course)
                 .Include(s => s.Student).FirstOrDefaultAsync(m => m.SertificateID == id);
+            Sertificate.Student.User = _context.User.First(q => q.UserID == Sertificate.Student.UserID);
 
             if (Sertificate == null)
             {

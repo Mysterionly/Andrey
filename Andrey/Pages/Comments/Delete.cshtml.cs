@@ -43,25 +43,5 @@ namespace Andrey.Pages.Comments
 
             return Redirect(previous);
         }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Comment = await _context.Comment.FindAsync(id);
-
-            if (Comment != null)
-            {
-                _context.Comment.Remove(Comment);
-                await _context.SaveChangesAsync();
-            }
-
-            string previous = Request.Headers["Referer"].ToString();
-
-            return RedirectToPage(previous);
-        }
     }
 }

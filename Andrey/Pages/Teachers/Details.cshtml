@@ -2,30 +2,28 @@
 @model Andrey.Pages.Teachers.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Информация о учителе";
 }
 
-<h1>Details</h1>
+<h1>Подробнее о учителе</h1>
 
 <div>
-    <h4>Teacher</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Teacher.Description)
+            ФИО
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teacher.User.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            Описание
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Teacher.Description)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Teacher.User)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Teacher.User.Login)
-        </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Teacher.TeacherID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Обратно к списку учителей</a>
 </div>

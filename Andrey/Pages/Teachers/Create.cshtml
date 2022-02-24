@@ -2,35 +2,34 @@
 @model Andrey.Pages.Teachers.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Добавить учителя в должность";
 }
 
-<h1>Create</h1>
+<h1>Добавить учителя в должность</h1>
 
-<h4>Teacher</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Teacher.UserID" class="control-label"></label>
+                <label>ФИО</label>
                 <select asp-for="Teacher.UserID" class ="form-control" asp-items="ViewBag.UserID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Teacher.Description" class="control-label"></label>
+                <label>Информация о учителе</label>
                 <input asp-for="Teacher.Description" class="form-control" />
                 <span asp-validation-for="Teacher.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Ввести учителя в должность!" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">К списку учителей</a>
 </div>
 
 @section Scripts {

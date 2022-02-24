@@ -22,6 +22,7 @@ namespace Andrey.Pages.Students
 
         [BindProperty]
         public Student Student { get; set; }
+        public IList<Sertificate> Sertificate { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -48,10 +49,15 @@ namespace Andrey.Pages.Students
             }
 
             Student = await _context.Student.FindAsync(id);
+            Sertificate = _context.Sertificate.Include(s => s.StudentID == id).ToList();
 
             if (Student != null)
             {
                 _context.Student.Remove(Student);
+                foreach (Sertificate s in Sertificate)
+                {
+                    _context.Sertificate.Remove(s);
+                }
                 await _context.SaveChangesAsync();
             }
 

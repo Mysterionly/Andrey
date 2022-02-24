@@ -36,7 +36,7 @@ namespace Andrey.Pages.Lessongs
             {
                 return Page();
             }
-
+            Lessong.Created = DateTime.Now;
             _context.Lessong.Add(Lessong);
             await _context.SaveChangesAsync();
 

@@ -2,25 +2,25 @@
 @model Andrey.Pages.Courses.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Курсы";
 }
 
-<h1>Index</h1>
+<h1>Список курсов</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Создать новый курс</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].Name)
+                Название курса
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].Description)
+                Описание
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].Teacher)
+                Преподаватель
             </th>
             <th></th>
         </tr>
@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Teacher.User.FullName)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.CourseID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CourseID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CourseID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.CourseID">Редактировать</a> |
+                <a asp-page="./Details" asp-route-id="@item.CourseID">Перейти к материалам</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CourseID">Удалить</a>
             </td>
         </tr>
 }

@@ -21,6 +21,8 @@ namespace Andrey.Pages.Courses
         }
 
         public Course Course { get; set; }
+        public User User { get; set; }
+        public Teacher Teacher { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,6 +33,8 @@ namespace Andrey.Pages.Courses
 
             Course = await _context.Course
                 .Include(c => c.Teacher).FirstOrDefaultAsync(m => m.CourseID == id);
+            Teacher = await _context.Teacher.FirstOrDefaultAsync(u => u.TeacherID == Course.TeacherID);
+            User = await _context.User.FirstOrDefaultAsync(u => u.UserID == Teacher.UserID);
 
 
             if (Course == null)

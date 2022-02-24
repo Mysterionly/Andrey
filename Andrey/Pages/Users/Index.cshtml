@@ -11,30 +11,19 @@
 <h1>Пользователи</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Создать нового пользователя</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <!--
             <th>
-                @Html.DisplayNameFor(model => model.User[0].Surname)
+                ФИО
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User[0].Name)
+                Логин
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User[0].MidName)
-            </th>
-            -->
-            <th>
-                @Html.DisplayNameFor(model => model.User[0].FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User[0].Login)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User[0].Password)
+                Пароль
             </th>
             <th></th>
         </tr>
@@ -44,13 +33,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Surname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MidName)
+                        @Html.DisplayFor(modelItem => item.FullName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Login)
@@ -59,9 +42,9 @@
                         @Html.DisplayFor(modelItem => item.Password)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.UserID">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.UserID">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.UserID">Delete</a>
+                        <a asp-page="./Edit" asp-route-id="@item.UserID">Редактировать</a>
+                        <a asp-page="./Details" asp-route-id="@item.UserID">Посмотреть полную информацию</a>
+                        <a asp-page="./Delete" asp-route-id="@item.UserID">Удалить</a>
                     </td>
                 </tr>
             }
